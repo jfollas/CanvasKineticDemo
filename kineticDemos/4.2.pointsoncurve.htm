@@ -1,0 +1,81 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Kinetic: </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">
+        #container
+        {
+            border: 1px solid #222;
+            display: inline-block;
+        }
+    </style>
+    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+    <script src="../Script/tiger.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container">
+    </div>
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var stage = new Kinetic.Stage({
+                container: 'container',
+                width: 578,
+                height: 200,
+                scale: 0.5
+            });
+
+            var layer = new Kinetic.Layer();
+            var group1 = new Kinetic.Group();
+
+            var c = "M100,200 C100,100 250,100 250,200 S400,300 400,200";
+
+            var path = new Kinetic.Path({
+                stroke: 'red',
+                strokeWidth: 8,
+                data: c
+            });
+
+            group1.add(path);
+
+            for (t = 0; t <= 1; t += 0.25) {
+                var p1 = Kinetic.Path.getPointOnCubicBezier(t, 100, 200, 100, 100, 250, 100, 250, 200);
+                group1.add(new Kinetic.Circle({ x: p1.x, y: p1.y, radius: 10, fill: 'black' }));
+            }
+
+            for (t = 0.25; t <= 1; t += 0.25) {
+                var p1 = Kinetic.Path.getPointOnCubicBezier(t, 250, 200, 250, 300, 400, 300, 400, 200);
+                group1.add(new Kinetic.Circle({ x: p1.x, y: p1.y, radius: 10, fill: 'black' }));
+            }
+
+            layer.add(group1);
+
+
+            var group2 = new Kinetic.Group({ x: 200, y: -75, scale: { x: 0.75, y: 1} });
+
+            c = "M200,300 Q400,50 600,300 T1000,300";
+
+            path = new Kinetic.Path({
+                stroke: 'green',
+                strokeWidth: 8,
+                data: c
+            });
+
+            group2.add(path);
+
+            for (t = 0; t <= 1; t += 0.1) {
+                var p1 = Kinetic.Path.getPointOnQuadraticBezier(t, 200, 300, 400, 50, 600, 300);
+                group2.add(new Kinetic.Circle({ x: p1.x, y: p1.y, radius: 10, fill: 'black' }));
+            }
+
+            for (t = 0.1; t <= 1; t += 0.1) {
+                var p1 = Kinetic.Path.getPointOnQuadraticBezier(t, 600, 300, 800, 550, 1000, 300);
+                group2.add(new Kinetic.Circle({ x: p1.x, y: p1.y, radius: 10, fill: 'black' }));
+            }
+
+            layer.add(group2);
+            stage.add(layer);
+        }
+    </script>
+</body>
+</html>

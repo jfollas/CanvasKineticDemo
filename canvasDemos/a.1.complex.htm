@@ -1,0 +1,37 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>HTML5 Canvas: Transformation State Stack</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">#myCanvas { border: 1px solid #222; }</style>
+</head>
+<body>
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+
+            context.save();
+            context.translate(289, 100);
+
+            context.save();
+            context.rotate(45 * Math.PI / 180);
+
+            context.fillStyle = 'red';
+            context.fillRect(0, 0, 75, 50);
+
+            context.restore();
+
+            context.fillStyle = 'blue';
+            context.fillRect(0, 0, 75, 50);
+
+            context.restore();
+
+            context.fillStyle = 'green';
+            context.fillRect(0, 0, 75, 50);
+
+        }
+    </script>
+</body>
+</html>

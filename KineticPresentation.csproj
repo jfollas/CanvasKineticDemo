@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11706E74-5862-4BC4-ADA1-8A980F398BA9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KineticPresentation</RootNamespace>
+    <AssemblyName>KineticPresentation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="blank.htm" />
+    <Content Include="Canvas.htm" />
+    <Content Include="canvasDemos\blank.htm" />
+    <Content Include="canvasDemos\1.0.line.htm" />
+    <Content Include="canvasDemos\2.0.arc.htm" />
+    <Content Include="canvasDemos\3.0.quad.htm" />
+    <Content Include="canvasDemos\4.0.bezier.htm" />
+    <Content Include="canvasDemos\5.0.compoundPath.htm" />
+    <Content Include="canvasDemos\6.0.closePath.htm" />
+    <Content Include="canvasDemos\7.0.gradiant.htm" />
+    <Content Include="canvasDemos\7.1.gradiant.htm" />
+    <Content Include="canvasDemos\8.0.image.htm" />
+    <Content Include="canvasDemos\8.1.image.htm" />
+    <Content Include="canvasDemos\9.0.text.htm" />
+    <Content Include="canvasDemos\9.1.text.htm" />
+    <Content Include="canvasDemos\a.1.complex.htm" />
+    <Content Include="canvasDemos\a.0.complex.htm" />
+    <Content Include="default.htm" />
+    <Content Include="Kinetic.htm" />
+    <Content Include="images\ninja.png" />
+    <Content Include="images\squirrel.jpg" />
+    <Content Include="images\ss235.jpg" />
+    <Content Include="images\ufo.png" />
+    <Content Include="kineticDemos\blank.htm" />
+    <Content Include="kineticDemos\1.0.shapes.htm" />
+    <Content Include="kineticDemos\1.1.shapes.htm" />
+    <Content Include="kineticDemos\4.5.textpath.htm" />
+    <Content Include="kineticDemos\4.0.path.htm" />
+    <Content Include="kineticDemos\4.6.textpath.htm" />
+    <Content Include="kineticDemos\4.1.path.htm" />
+    <Content Include="kineticDemos\1.3.groups.htm" />
+    <Content Include="kineticDemos\2.0.events.htm" />
+    <Content Include="kineticDemos\1.2.donut.htm" />
+    <Content Include="kineticDemos\3.0.sprites.htm" />
+    <Content Include="kineticDemos\5.0.transition.htm" />
+    <Content Include="kineticDemos\6.0.toDataURL.htm" />
+    <Content Include="kineticDemos\6.1.toDataURL.htm" />
+    <Content Include="kineticDemos\7.0.selectors.htm" />
+    <Content Include="kineticDemos\4.2.pointsoncurve.htm" />
+    <Content Include="kineticDemos\4.05.world.htm" />
+    <Content Include="lib\codemirror.css" />
+    <Content Include="lib\codemirror.js" />
+    <Content Include="lib\css\css.js" />
+    <Content Include="lib\css\index.html" />
+    <Content Include="lib\formatting.js" />
+    <Content Include="lib\htmlmixed\htmlmixed.js" />
+    <Content Include="lib\htmlmixed\index.html" />
+    <Content Include="lib\javascript-hint.js" />
+    <Content Include="lib\javascript\index.html" />
+    <Content Include="lib\javascript\javascript.js" />
+    <Content Include="lib\jquery-1.7.2.js" />
+    <Content Include="lib\jquery-ui-1.8.20.js" />
+    <Content Include="lib\jquery.layout-latest.js" />
+    <Content Include="lib\jsbeautify.js" />
+    <Content Include="lib\match-highlighter.js" />
+    <Content Include="lib\themes\ambiance.css" />
+    <Content Include="lib\themes\blackboard.css" />
+    <Content Include="lib\themes\cobalt.css" />
+    <Content Include="lib\themes\jason.css" />
+    <Content Include="lib\themes\eclipse.css" />
+    <Content Include="lib\themes\elegant.css" />
+    <Content Include="lib\themes\erlang-dark.css" />
+    <Content Include="lib\themes\lesser-dark.css" />
+    <Content Include="lib\themes\monokai.css" />
+    <Content Include="lib\themes\neat.css" />
+    <Content Include="lib\themes\night.css" />
+    <Content Include="lib\themes\rubyblue.css" />
+    <Content Include="lib\themes\vibrant-ink.css" />
+    <Content Include="lib\themes\xq-dark.css" />
+    <Content Include="lib\xml\index.html" />
+    <Content Include="lib\xml\xml.js" />
+    <Content Include="printimage.htm" />
+    <Content Include="Script\tiger.js.txt" />
+    <Content Include="Script\Kinetic.3.10.5.js" />
+    <Content Include="Script\tiger.js" />
+    <Content Include="Script\worldMap.js" />
+    <Content Include="spatialdemo\scripts\Kinetic.3.10.5.js" />
+    <Content Include="spatialdemo\scripts\proj4js-compressed.js" />
+    <Content Include="spatialdemo\scripts\usa.js">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="spatialdemo\spatial.htm" />
+    <Content Include="spatialdemo\OL\BaseTypes.js" />
+    <Content Include="spatialdemo\OL\BaseTypes\Bounds.js" />
+    <Content Include="spatialdemo\OL\BaseTypes\Class.js" />
+    <Content Include="spatialdemo\OL\BaseTypes\Date.js" />
+    <Content Include="spatialdemo\OL\BaseTypes\Element.js" />
+    <Content Include="spatialdemo\OL\BaseTypes\LonLat.js" />
+    <Content Include="spatialdemo\OL\BaseTypes\Pixel.js" />
+    <Content Include="spatialdemo\OL\BaseTypes\Size.js" />
+    <Content Include="spatialdemo\OL\Feature.js" />
+    <Content Include="spatialdemo\OL\Feature\Vector.js" />
+    <Content Include="spatialdemo\OL\Format.js" />
+    <Content Include="spatialdemo\OL\Format\WKT.js" />
+    <Content Include="spatialdemo\OL\Geometry.js" />
+    <Content Include="spatialdemo\OL\Geometry\Collection.js" />
+    <Content Include="spatialdemo\OL\Geometry\Curve.js" />
+    <Content Include="spatialdemo\OL\Geometry\LinearRing.js" />
+    <Content Include="spatialdemo\OL\Geometry\LineString.js" />
+    <Content Include="spatialdemo\OL\Geometry\MultiLineString.js" />
+    <Content Include="spatialdemo\OL\Geometry\MultiPoint.js" />
+    <Content Include="spatialdemo\OL\Geometry\MultiPolygon.js" />
+    <Content Include="spatialdemo\OL\Geometry\Point.js" />
+    <Content Include="spatialdemo\OL\Geometry\Polygon.js" />
+    <Content Include="spatialdemo\OL\Projection.js" />
+    <Content Include="spatialdemo\OL\Util.js" />
+    <Content Include="style.css" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>16374</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

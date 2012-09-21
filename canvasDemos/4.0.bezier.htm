@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>HTML5 Canvas: Cubic Bezier Curve</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">#myCanvas { border: 1px solid #222; }</style>
+</head>
+<body>
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+
+            context.beginPath();
+            context.moveTo(188, 130);
+            context.bezierCurveTo(140, 10, 388, 10, 388, 170);
+
+            context.lineWidth = 10;
+            context.strokeStyle = "black";
+            context.stroke();
+
+            // Show the control points
+            context.beginPath();
+            context.arc(140, 10, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = "red";
+            context.fill();
+
+            context.beginPath();
+            context.arc(388, 10, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = "red";
+            context.fill();
+        }
+    </script>
+</body>
+</html>

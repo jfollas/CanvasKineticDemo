@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html />
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Spatial Demo</title>
+    <script type="text/javascript">
+        var OpenLayers = {};
+    </script>
+    <script src="scripts/proj4js-compressed.js" type="text/javascript"></script>
+    <script src="OL/BaseTypes/Class.js" type="text/javascript"></script>
+    <script src="OL/BaseTypes.js" type="text/javascript"></script>
+    <script src="OL/BaseTypes/Bounds.js" type="text/javascript"></script>
+    <script src="OL/BaseTypes/Element.js" type="text/javascript"></script>
+    <script src="OL/BaseTypes/LonLat.js" type="text/javascript"></script>
+    <script src="OL/BaseTypes/Pixel.js" type="text/javascript"></script>
+    <script src="OL/BaseTypes/Size.js" type="text/javascript"></script>
+    <script src="OL/Geometry.js" type="text/javascript"></script>
+    <script src="OL/Geometry/Point.js" type="text/javascript"></script>
+    <script src="OL/Geometry/Collection.js" type="text/javascript"></script>
+    <script src="OL/Geometry/MultiPoint.js" type="text/javascript"></script>
+    <script src="OL/Geometry/Curve.js" type="text/javascript"></script>
+    <script src="OL/Geometry/LineString.js" type="text/javascript"></script>
+    <script src="OL/Geometry/LinearRing.js" type="text/javascript"></script>
+    <script src="OL/Geometry/MultiLineString.js" type="text/javascript"></script>
+    <script src="OL/Geometry/Polygon.js" type="text/javascript"></script>
+    <script src="OL/Geometry/MultiPolygon.js" type="text/javascript"></script>
+    <script src="OL/Util.js" type="text/javascript"></script>
+    <script src="OL/Feature.js" type="text/javascript"></script>
+    <script src="OL/Feature/Vector.js" type="text/javascript"></script>
+    <script src="OL/Format.js" type="text/javascript"></script>
+    <script src="OL/Format/WKT.js" type="text/javascript"></script>
+    <script src="OL/Projection.js" type="text/javascript"></script>
+    <script src="scripts/Kinetic.3.10.5.js" type="text/javascript"></script>
+    <script src="scripts/usa.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container">
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+
+            var wkt = new OpenLayers.Format.WKT();
+            var geographic = new OpenLayers.Projection("EPSG:4326");
+            var mercator = new OpenLayers.Projection("EPSG:900913");
+
+            var bbox = wkt.read('POLYGON ((-80.518700 41.977520, -80.518700 38.403141, -84.820236 38.403141, -84.820236 41.977520, -80.518700 41.977520))').geometry.transform(geographic, mercator).getBounds();
+
+            var stage = new Kinetic.Stage({
+                container: "container",
+                width: 800,
+                height: 1000
+            });
+
+            var layer = new Kinetic.Layer();
+
+            var x, merc, xv;
+
+            var indexes = [39, 26, 55, 17, 18];
+
+            for (var ii = 0; ii < indexes.length; ii++) {
+
+                var i = indexes[ii];
+
+                if (state[i] != null) {
+                    x = wkt.read(state[i].wkt);
+
+                    if (x.length && x.length > 0) {
+                        for (var j = 0; j < x.length; j++) {
+                            var y = x[j];
+                            merc = y.geometry.transform(geographic, mercator);
+                            bbox.extend(merc.getBounds());
+
+                            for (var k = 0; k < merc.components.length; k++) {
+                                xv = merc.components[k].getVertices();
+
+                                var sa = new Kinetic.Shape({
+                                    name: state[i].name,
+                                    drawFunc: drawVertices(xv),
+                                    stroke: 'black',
+                                    fill: 'white'
+                                });
+
+                                layer.add(sa);
+                            }
+                        }
+                    }
+                    else {
+                        merc = x.geometry.transform(geographic, mercator);
+                        bbox.extend(merc.getBounds());
+
+                        for (var k = 0; k < merc.components.length; k++) {
+                            xv = merc.components[k].getVertices();
+
+
+                            /*
+
+
+                            KINETIC SHAPE
+
+
+                            */
+                            var sa = new Kinetic.Shape({
+                                name: state[i].name,
+                                drawFunc: drawVertices(xv),
+                                stroke: 'black',
+                                fill: 'white'
+                            });
+
+                            layer.add(sa);
+
+
+
+                        }
+                    }
+                }
+            }
+            bbox.left -= bbox.getWidth() * 0.05;
+            bbox.right += bbox.getWidth() * 0.05;
+            bbox.top += bbox.getHeight() * 0.05;
+            bbox.bottom -= bbox.getHeight() * 0.05;
+
+            var originX = bbox.left;
+            var originY = bbox.top;
+
+            stage.add(layer);
+
+
+
+
+            /*
+
+
+            Translate Mercator coordinates to Screen Pixels
+
+
+            */
+
+            function getLocalXY(point) {
+                var resolution = bbox.getWidth() / 800;
+                var x = ((point.x) / resolution + (-originX / resolution));
+                var y = ((originY / resolution) - point.y / resolution);
+                return [x, y];
+            }
+
+
+
+
+            /*
+
+
+            KINETIC SHAPE'S drawFunc()
+
+
+            */
+
+            function drawVertices(vertices) {
+
+                var v = vertices;
+
+                return function() {
+                    var ctx = this.getContext();
+
+                    ctx.beginPath();
+
+                    var start = getLocalXY(v[0]);
+                    ctx.moveTo(start[0], start[1]);
+
+                    for (var j = 1; j < v.length; j++) {
+                        var pt = getLocalXY(v[j]);
+                        ctx.lineTo(pt[0], pt[1]);
+                    }
+
+                    ctx.closePath();
+
+                    this.stroke(ctx);
+                    this.fill(ctx);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

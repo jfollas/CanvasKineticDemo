@@ -1,0 +1,83 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Kinetic: </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">
+        #container
+        {
+            border: 1px solid #222;
+            display: inline-block;
+            background: url(/images/ss235.jpg);
+        }
+    </style>
+    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container">
+    </div>
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var stage = new Kinetic.Stage({
+                container: 'container',
+                width: 578,
+                height: 200
+            });
+
+            var layer = new Kinetic.Layer();
+            stage.add(layer);
+
+            var imageObj = new Image();
+
+            imageObj.onload = function() {
+                var img = new Kinetic.Image({
+                    x: 250,
+                    y: 0,
+                    scale: 0.25,
+                    image: imageObj
+                });
+
+                img.on("click", function() {
+                    img.transitionTo({
+                        x: 175,
+                        y: 100,
+                        scale: { x: 0.5, y: 0.5 },
+                        duration: 10,
+                        easing: 'ease-out',
+                        callback: function() {
+                            img.transitionTo({
+                                x: 250,
+                                y: 0,
+                                scale: { x: 0.25, y: 0.25 },
+                                duration: 7,
+                                easing: 'ease-in'
+                            });
+                        }
+                    });
+                });
+
+                layer.add(img);
+                layer.draw();
+            };
+
+            imageObj.src = "/images/ufo.png";
+
+            // Helper for demo
+            var link = new Kinetic.Text({ textFill: 'white', fontSize: '14', text: 'Image', x: 5, y: 5 });
+            link.on("click", function() {
+                stage.toDataURL({
+                    callback: function(url) {
+                        var w = window.open("printimage.htm", "ninja");
+                        w.opener = window;
+                        setTimeout(function() {
+                            var contentDiv = w.document.getElementById("content");
+                            contentDiv.innerHTML = "<img src='" + url + "' border='1'>";
+                        }, 500);
+                    }
+                });
+            });
+            layer.add(link);
+        };
+    </script>
+</body>
+</html>

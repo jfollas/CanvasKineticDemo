@@ -1,0 +1,80 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Kinetic: </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">#container { border: 1px solid #222; display: inline-block; }</style>
+    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var stage = new Kinetic.Stage({
+                container: 'container',
+                width: 578,
+                height: 200
+            });
+
+            var layer = new Kinetic.Layer();
+
+            var circle1 = new Kinetic.Circle({
+                x: 50,
+                y: 50,
+                radius: 25,
+                fill: 'red',
+                stroke: 'black'
+            });
+
+            var circle2 = new Kinetic.Circle({
+                x: 125,
+                y: 50,
+                radius: 25,
+                fill: 'green',
+                stroke: 'black'
+            });
+
+            var rect = new Kinetic.Rect({
+                x: 174,
+                y: 25,
+                width: 50,
+                height: 50,
+                fill: 'white',
+                stroke: 'black'
+            });
+
+            layer.add(circle1);
+            layer.add(circle2);
+            layer.add(rect);
+
+            circle1.on("mouseover", function() {
+                rect.setFill('red');
+                layer.draw();
+            });
+
+            circle1.on("mouseout", function() {
+                rect.setFill('');
+                layer.draw(); 
+            });
+
+            circle2.on("click tap", function() {
+                rect.setFill('green');
+                layer.draw(); 
+            });
+
+            stage.add(layer);
+
+            // Desktop Events:
+            // mouseover, mouseout, mousemove, mousedown,
+            // mouseup, click, dblclick, dragstart, dragend
+
+            // Mobile Events:
+            // touchstart, touchmove, touchend, tap, dbltap, 
+            // dragstart, dragmove, dragend
+
+
+        };
+    </script>
+</body>
+</html>

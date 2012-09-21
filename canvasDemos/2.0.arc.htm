@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>HTML5 Canvas: Arc</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">#myCanvas { border: 1px solid #222; }</style>
+</head>
+<body>
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+
+            var x = canvas.width / 2;
+            var y = canvas.height / 2;
+
+            var radius = 75;
+
+            // 0 degrees in radians
+            var startAngle = 0 * Math.PI / 180;
+
+            // 224 degrees in radians
+            var endAngle = 224 * Math.PI / 180;  
+            var counterClockwise = false;
+
+            context.beginPath();
+            context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+            
+            context.lineWidth = 15;
+            context.strokeStyle = "black";
+            context.stroke();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>HTML5 Canvas: Quadratic Curve</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">#myCanvas { border: 1px solid #222; }</style>
+</head>
+<body>
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+
+            context.beginPath();
+            context.moveTo(188, 150);
+            context.quadraticCurveTo(288, 0, 388, 150);
+
+            context.lineWidth = 10;
+            context.strokeStyle = "black";
+            context.stroke();
+
+            // Show the control point
+            context.beginPath();
+            context.arc(288, 0, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = "red";
+            context.fill();
+        }
+    </script>
+</body>
+</html>

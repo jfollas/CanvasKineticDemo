@@ -1,0 +1,40 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Kinetic: </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">#container { border: 1px solid #222; display: inline-block; }</style>
+    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+    <script src="../Script/tiger.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var stage = new Kinetic.Stage({
+                container: 'container',
+                width: 578,
+                height: 200
+            });
+
+            var layer = new Kinetic.Layer();
+            var group = new Kinetic.Group({ scale: 0.5, x: 100, y: 50 });
+
+            for (var i = 0; i < tiger.length; i++) {
+                var path = new Kinetic.Path(tiger[i]);
+                group.add(path);
+            }
+
+            group.setDraggable(true);
+            layer.add(group);
+            stage.add(layer);
+
+            // Helper for demo
+            var link = new Kinetic.Text({ textFill: 'blue', fontSize: '14', text: 'Tiger Definition', x: 5, y: 5 });
+            link.on("click", function() { window.open("/Script/tiger.js.txt", "ninja"); });
+            layer.add(link);
+        };
+    </script>
+</body>
+</html>

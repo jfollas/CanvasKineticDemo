@@ -1,0 +1,71 @@
+﻿body
+{
+    background-color: #eef;
+}
+
+#container
+{
+    border: 2px solid #200000;
+    display: inline-block;
+    box-shadow: 10px 10px 5px #888;
+}
+
+iframe
+{
+    border: none;
+    width: 597px;
+    height: 222px;
+    background-color: white;
+}
+
+#btnUpdate
+{
+    position: absolute;
+    right: 30px;
+    top: 245px;
+    width: 70px;
+    z-index: 800;
+}
+
+#btnFormat
+{
+    position: absolute;
+    right: 100px;
+    top: 245px;
+    width: 70px;
+    z-index: 800;
+}
+
+#demos
+{
+    position: absolute;
+    right: 5px;
+    top: 206px;
+    width: 350px;
+    z-index: 800;
+    font-size: 14pt;
+}
+
+#onlyJS
+{
+    position: absolute;
+    right: 360px;
+    top: 212px;
+}
+
+.demolink
+{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #00008B;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Arial;
+    font-size:18pt;
+}
+
+.demolink:hover
+{
+    text-decoration: underline;
+}

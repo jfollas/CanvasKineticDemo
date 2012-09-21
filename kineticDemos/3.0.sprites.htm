@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Kinetic: Sprite Animation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">
+        #container
+        {
+            border: 1px solid #222;
+            display: inline-block;
+        }
+    </style>
+    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container">
+    </div>
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var stage = new Kinetic.Stage({
+                container: "container",
+                width: 578,
+                height: 200
+            });
+
+            var layer = new Kinetic.Layer();
+
+            var animations = {
+                ninja: [
+                    { x: 151, y: 586, width: 141, height: 194 },
+                    { x: 779, y: 390, width: 149, height: 194 },
+                    { x: 268, y: 2, width: 131, height: 190 },
+                    { x: 779, y: 390, width: 149, height: 194 },
+                    { x: 151, y: 586, width: 141, height: 194 },
+                    { x: 455, y: 390, width: 149, height: 192 },
+                    { x: 326, y: 196, width: 153, height: 192 },
+                    { x: 2, y: 586, width: 147, height: 194 },
+                    { x: 2, y: 196, width: 161, height: 192 },
+                    { x: 2, y: 586, width: 147, height: 194 },
+                    { x: 326, y: 196, width: 153, height: 192 },
+                    { x: 455, y: 390, width: 149, height: 192 },
+                    { x: 455, y: 586, width: 133, height: 198 },
+                    { x: 606, y: 390, width: 171, height: 194 },
+                    { x: 2, y: 2, width: 131, height: 188 },
+                    { x: 135, y: 2, width: 131, height: 190 },
+                    { x: 584, y: 2, width: 181, height: 192 },
+                    { x: 401, y: 2, width: 181, height: 192 },
+                    { x: 165, y: 196, width: 159, height: 192 },
+                    { x: 294, y: 586, width: 159, height: 196 },
+                    { x: 135, y: 2, width: 131, height: 190 },
+                    { x: 2, y: 2, width: 131, height: 188 },
+                    { x: 606, y: 390, width: 171, height: 194 },
+                    { x: 455, y: 586, width: 133, height: 198 },
+                    { x: 455, y: 390, width: 149, height: 192 }
+                ]
+            };
+
+            var imageObj = new Image();
+            imageObj.onload = function() {
+                var ninja = new Kinetic.Sprite({
+                    x: 250,
+                    y: 5,
+                    image: imageObj,
+                    animation: 'ninja',
+                    animations: animations,
+                    frameRate: 10,
+                    draggable: true,
+                    dragConstraint: 'horizontal'
+                });
+
+                // add the shape to the layer
+                layer.add(ninja);
+
+                // add the layer to the stage
+                stage.add(layer);
+
+                // start sprite animation
+                ninja.start();
+            };
+            imageObj.src = "/images/ninja.png";
+
+            // Helper for demo
+            var link = new Kinetic.Text({ textFill: 'blue', fontSize: '14', text: 'Spritesheet', x: 5, y: 5 });
+            link.on("click", function() { window.open("/images/ninja.png", "ninja"); });
+            layer.add(link);
+        };    
+    </script>
+</body>
+</html>

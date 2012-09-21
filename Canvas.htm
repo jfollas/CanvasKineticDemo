@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 Canvas Demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="lib/jquery-1.7.2.js" type="text/javascript"></script>
+    <script src="lib/jquery-ui-1.8.20.js" type="text/javascript"></script>
+    <script src="lib/codemirror.js" type="text/javascript"></script>
+    <script src="lib/xml/xml.js" type="text/javascript"></script>
+    <script src="lib/javascript/javascript.js" type="text/javascript"></script>
+    <script src="lib/css/css.js" type="text/javascript"></script>
+    <script src="lib/htmlmixed/htmlmixed.js" type="text/javascript"></script>
+    <script src="lib/formatting.js" type="text/javascript"></script>
+    <script src="lib/jsbeautify.js" type="text/javascript"></script>
+    <link href="lib/codemirror.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <iframe id="preview" src="/blank.htm"></iframe>
+        <a href="Kinetic.htm" class="demolink">HTML5 Canvas Demos</a>
+    <input type="checkbox" id="onlyJS" />
+    <select id="demos">
+        <option value="">Select Canvas Demo</option>
+        <option value="/canvasDemos/1.0.line.htm">1. Line</option>
+        <option value="/canvasDemos/2.0.arc.htm">2. Arc</option>
+        <option value="/canvasDemos/3.0.quad.htm">3. Quadradic Curve</option>
+        <option value="/canvasDemos/4.0.bezier.htm">4. Cubic Bezier Curve</option>
+        <option value="/canvasDemos/5.0.compoundPath.htm">5. Compound Path</option>
+        <option value="/canvasDemos/6.0.closePath.htm">6. Closed Path</option>
+        <option value="/canvasDemos/7.0.gradiant.htm">7. Gradiant</option>
+        <option value="/canvasDemos/7.1.gradiant.htm">8. Gradiant Explained</option>
+        <option value="/canvasDemos/8.0.image.htm">9. Image</option>
+        <option value="/canvasDemos/8.1.image.htm">10. Image Scaling</option>
+        <option value="/canvasDemos/9.0.text.htm">11. Text</option>
+        <option value="/canvasDemos/9.1.text.htm">12. More Text</option>
+        <option value="/canvasDemos/a.0.complex.htm">13. Transformation</option>
+        <option value="/canvasDemos/a.1.complex.htm">14. State Stack</option>
+        <option value="/canvasDemos/blank.htm">Empty Page for Custom Demo</option>
+    </select> 
+    <button type="button" id="btnUpdate">Update</button> 
+    <button type="button" id="btnFormat">Format</button>
+    <div style="position: absolute; top: 234px; left: 7px; right: 5px; bottom: 5px;">
+        <textarea id="code"></textarea>
+    </div>
+    <script type="text/javascript">
+
+        $(function() {
+            var cachedHtml;
+            $("#btnUpdate").click(function() {
+                var previewFrame = document.getElementById('preview');
+                var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
+
+                if ($("#onlyJS").is(':checked')) {
+                    preview.open();
+                    preview.write(cachedHtml);
+                    //preview.close();
+                    preview.scripts.demoScript.outerHTML = editor.getValue();
+                    var h = preview.documentElement.outerHTML;
+                    preview.open();
+                    preview.write(h);
+                    preview.close();
+                }
+                else {
+                    preview.open();
+                    preview.write(editor.getValue());
+                    preview.close();
+                }
+            });
+
+            $("#btnFormat").click(function() {
+                CodeMirror.commands["selectAll"](editor);
+                editor.autoFormatRange(editor.getCursor(true), editor.getCursor(false));
+            });
+
+            $("#demos").change(function(evt) {
+
+                var previewFrame = document.getElementById('preview');
+                var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
+
+                var url = evt.currentTarget.value;
+
+                if (url != null && url != "") {
+
+                    $.get(url)
+                    .then(function(html) {
+                        cachedHtml = html;
+                        preview.open();
+                        preview.write(html);
+                        preview.close();
+                    })
+                    .done(function() {
+                        if ($("#onlyJS").is(':checked')) {
+                            editor.setValue('<scr' + 'ipt type="text/javascript" id="demoScript">\n\n' + js_beautify(preview.scripts.demoScript.innerHTML) + '\n\n</sc' + 'ript>' + Array(10).join('\n'));
+                        }
+                        else {
+                            editor.setValue(cachedHtml + Array(10).join('\n'));
+                        }
+                    });
+                }
+            });
+
+            $("#onlyJS").change(function() {
+                if ($("#demos").val() === "")
+                    return;
+
+                var previewFrame = document.getElementById('preview');
+                var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
+
+                if ($("#onlyJS").is(':checked')) {
+                    editor.setValue('<scr' + 'ipt type="text/javascript" id="demoScript">\n\n' + js_beautify(preview.scripts.demoScript.innerHTML) + '\n\n</sc' + 'ript>' + Array(10).join('\n'));
+                }
+                else {
+                    editor.setValue(cachedHtml);
+                }
+            });
+        });
+
+
+        var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+            mode: 'text/html',
+            tabMode: 'indent',
+            lineNumbers: true,
+            indentUnit: 4
+        });
+    </script>
+</body>
+</html>

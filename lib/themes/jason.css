@@ -1,0 +1,83 @@
+html
+{
+    cursor: text;
+}
+
+.cm-s-jason 
+{
+    font-family: Consolas;
+    font-size: 16pt;
+}
+
+
+.cm-s-jason span.xml-tagname
+{
+    color: #800000;
+}
+.cm-s-jason span.xml-attribute
+{
+    color: #1C1188;
+}
+.cm-s-jason span.xml-punctuation
+{
+    color: #0000CC;
+}
+.cm-s-jason span.xml-attname
+{
+    color: #9900FF;
+}
+.cm-s-jason span.xml-comment
+{
+    color: #076E13;
+}
+.cm-s-jason span.xml-cdata
+{
+    color: #4488AA;
+}
+.cm-s-jason span.xml-processing
+{
+    color: #999999;
+}
+.cm-s-jason span.xml-entity
+{
+    color: #AA2222;
+}
+.cm-s-jason span.xml-error
+{
+    color: #FF0000 !important;
+}
+.cm-s-jason span.xml-text
+{
+    color: black;
+}
+
+.cm-s-jason span.js-punctuation {
+    color: #666666;
+}
+.cm-s-jason span.js-operator {
+    color: #666666;
+}
+.cm-s-jason span.js-keyword {
+    color: #770088;
+}
+.cm-s-jason span.js-atom {
+    color: #228811;
+}
+.cm-s-jason span.js-variable {
+    color: black;
+}
+.cm-s-jason span.js-variabledef {
+    color: #0000FF;
+}
+.cm-s-jason span.js-localvariable {
+    color: #004499;
+}
+.cm-s-jason span.js-property {
+    color: black;
+}
+.cm-s-jason span.js-comment {
+    color: #04560A;
+}
+.cm-s-jason span.js-string {
+    color: #AA2222;
+}

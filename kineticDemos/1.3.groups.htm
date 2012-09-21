@@ -1,0 +1,57 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Kinetic: </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">#container { border: 1px solid #222; display: inline-block; }</style>
+    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var stage = new Kinetic.Stage({
+                container: 'container',
+                width: 578,
+                height: 200
+            });
+
+            var layer = new Kinetic.Layer();
+            var group = new Kinetic.Group({ draggable: true });
+
+            var circle = new Kinetic.Circle({ x: 50, y: 50, radius: 50, fill: 'purple' });
+            group.add(circle);
+
+            var shape = new Kinetic.Shape({
+                x: -50,
+                y: 0,
+                strokeWidth: 4,
+                stroke: 'blue',
+                drawFunc: function(context) {
+                    context.beginPath();
+                    context.moveTo(100, 20);
+
+                    // line 1
+                    context.lineTo(200, 160);
+
+                    // quadratic curve
+                    context.quadraticCurveTo(230, 200, 250, 120);
+
+                    // bezier curve
+                    context.bezierCurveTo(290, -40, 300, 200, 400, 150);
+
+                    // line 2
+                    context.lineTo(500, 90);
+
+                    this.stroke(context);
+                }
+            });
+
+            group.add(shape);
+            layer.add(group);
+            stage.add(layer);
+        };
+    </script>
+</body>
+</html>

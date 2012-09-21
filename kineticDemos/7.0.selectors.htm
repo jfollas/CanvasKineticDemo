@@ -1,0 +1,100 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Kinetic: </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style type="text/css">#container { border: 1px solid #222; display: inline-block; }</style>
+    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/javascript" id="demoScript">
+        window.onload = function() {
+            var stage = new Kinetic.Stage({
+                container: 'container',
+                width: 578,
+                height: 200
+            });
+
+            var layer = new Kinetic.Layer();
+
+            var circle1 = new Kinetic.Circle({
+                x: 100,
+                y: 100,
+                radius: 25,
+                fill: 'red',
+                strokeWidth: 4,
+                stroke: 'black',
+                id: 'circle1',
+                name: 'circle'
+            });
+
+            layer.add(circle1);
+
+            var circle2 = new Kinetic.Circle({
+                x: 300,
+                y: 100,
+                radius: 25,
+                fill: 'green',
+                strokeWidth: 4,
+                stroke: 'black',
+                id: 'circle2',
+                name: 'circle'
+            });
+
+            layer.add(circle2);
+
+            var ellipse = new Kinetic.Ellipse({
+                x: 250,
+                y: 50,
+                radius: { x: 75, y: 25 },
+                fill: 'goldenrod',
+                strokeWidth: 4,
+                stroke: 'black'
+            });
+
+            layer.add(ellipse);
+
+            var pentagon = new Kinetic.RegularPolygon({
+                x: 350,
+                y: 100,
+                sides: 5,
+                radius: 40,
+                fill: 'gray',
+                strokeWidth: 4,
+                stroke: 'black',
+                rotationDeg: 22.5,
+                name: 'polygon'
+            });
+
+            layer.add(pentagon);
+
+            stage.add(layer);
+
+            // Demo Helper
+            var link = new Kinetic.Text({
+                text: 'Demo Action',
+                x: 5,
+                y: 5,
+                textFill: 'blue'
+            });
+
+            layer.add(link);
+            stage.draw();
+
+            link.on("click", function() {
+                var circles = layer.get(".circle");
+
+                for (var i = 0; i < circles.length; i++) {
+                    circles[i].setFill('purple');
+                }
+
+                layer.get("#circle1")[0].setStroke('orange');
+                
+                layer.draw();
+            });
+        };
+    </script>
+</body>
+</html>
