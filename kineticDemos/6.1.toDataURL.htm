@@ -11,7 +11,7 @@
             background: url(/images/ss235.jpg);
         }
     </style>
-    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+    <script src="../Script/kinetic-v4.3.3.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="container">
@@ -63,7 +63,7 @@
             imageObj.src = "/images/ufo.png";
 
             // Helper for demo
-            var link = new Kinetic.Text({ textFill: 'white', fontSize: '14', text: 'Image', x: 5, y: 5 });
+            var link = new Kinetic.Text({ fill: 'white', fontSize: '14', text: 'Image', x: 5, y: 5 });
             link.on("click", function() {
                 stage.toDataURL({
                     mimeType: 'image/jpeg',

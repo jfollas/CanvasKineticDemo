@@ -90,7 +90,10 @@
                     })
                     .done(function() {
                         if ($("#onlyJS").is(':checked')) {
-                            editor.setValue('<scr' + 'ipt type="text/javascript" id="demoScript">\n\n' + js_beautify(preview.scripts.demoScript.innerHTML) + '\n\n</sc' + 'ript>' + Array(10).join('\n'));
+                            setTimeout(function () {
+                                var scriptBlock = (preview.scripts.demoScript || preview.scripts[1]);
+                                editor.setValue('<scr' + 'ipt type="text/javascript" id="demoScript">\n\n' + js_beautify(scriptBlock.innerHTML) + '\n\n</sc' + 'ript>' + Array(10).join('\n'));
+                            }, 250);
                         }
                         else {
                             editor.setValue(cachedHtml + Array(10).join('\n'));
@@ -107,7 +110,7 @@
                 var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
 
                 if ($("#onlyJS").is(':checked')) {
-                    editor.setValue('<scr' + 'ipt type="text/javascript" id="demoScript">\n\n' + js_beautify(preview.scripts.demoScript.innerHTML) + '\n\n</sc' + 'ript>' + Array(10).join('\n'));
+                    editor.setValue('<scr' + 'ipt type="text/javascript" id="demoScript">\n\n' + js_beautify(preview.scripts[0].innerHTML) + '\n\n</sc' + 'ript>' + Array(10).join('\n'));
                 }
                 else {
                     editor.setValue(cachedHtml);

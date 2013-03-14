@@ -4,7 +4,7 @@
     <title>Kinetic: </title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <style type="text/css">#container { border: 1px solid #222; display: inline-block; }</style>
-    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+    <script src="../Script/kinetic-v4.3.3.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="container"></div>
@@ -32,7 +32,7 @@
             var textpath = new Kinetic.TextPath({
                 id: 'textpath',
                 data: c,
-                textFill: 'black',
+                fill: 'black',
                 fontSize: '24',
                 text: Array(4).join('All the world\'s a stage, and all the men and women merely players. They have their exits and their entrances; And one man in his time plays many parts.')
             });
@@ -47,14 +47,14 @@
 
             // Hide text on mouseover, show outline
             group.on("mouseover", function() {
-                this.get('#textpath')[0].setTextFill('');
+                this.get('#textpath')[0].setFill('');
                 this.get('#path')[0].setStroke('maroon'); 
                 this.getLayer().draw();
             });
 
             // revert to initial behavior
             group.on("mouseout", function() {
-                this.get('#textpath')[0].setTextFill('black');
+                this.get('#textpath')[0].setFill('black');
                 this.get('#path')[0].setStroke(''); 
                 this.getLayer().draw();
             });

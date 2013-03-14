@@ -4,13 +4,13 @@
     <title>Kinetic: </title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <style type="text/css">#container { border: 1px solid #222; display: inline-block; }</style>
-    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+    <script src="../Script/kinetic-v4.3.3.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="container"></div>
 
     <script type="text/javascript" id="demoScript">
-        window.onload = function() {
+        window.onload = function () {
             var stage = new Kinetic.Stage({
                 container: 'container',
                 width: 578,
@@ -24,13 +24,13 @@
                 y: 0,
                 strokeWidth: 4,
                 stroke: 'blue',
-                shadow: {
-                    color: 'black',
-                    blur: 5,
-                    offset: [10, 5],
-                    alpha: 0.3
-                },
-                drawFunc: function(context) {
+                shadowColor: 'black',
+                shadowBlur: 5,
+                shadowOffset: [10, 5],
+                shadowOpacity: 0.5,
+                drawFunc: function (canvas) {
+                    var context = canvas.getContext();
+
                     context.beginPath();
                     context.moveTo(100, 20);
 
@@ -46,7 +46,7 @@
                     // line 2
                     context.lineTo(500, 90);
 
-                    this.stroke(context);
+                    canvas.stroke(this);
                 }
             });
 

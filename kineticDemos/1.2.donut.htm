@@ -4,13 +4,13 @@
     <title>Kinetic: </title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <style type="text/css">#container { border: 1px solid #222; display: inline-block; }</style>
-    <script src="../Script/Kinetic.3.10.5.js" type="text/javascript"></script>
+    <script src="../Script/kinetic-v4.3.3.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="container"></div>
 
     <script type="text/javascript" id="demoScript">
-        window.onload = function() {
+        window.onload = function () {
             var stage = new Kinetic.Stage({
                 container: 'container',
                 width: 578,
@@ -24,14 +24,16 @@
                 stroke: 'black',
                 fill: 'yellow',
                 draggable: true,
-                drawFunc: function(context) {
+                drawFunc: function (canvas) {
+                    var context = canvas.getContext();
+
                     context.beginPath();
 
                     context.arc(100, 100, 45, 0, 2 * Math.PI, true);
                     context.arc(100, 100, 20, 0, 2 * Math.PI, true);
 
-                    this.fill(context);
-                    this.stroke(context);
+                    canvas.fill(this);
+                    canvas.stroke(this);
                 }
             });
 
@@ -43,15 +45,17 @@
                 stroke: 'black',
                 fill: 'red',
                 draggable: true,
-                drawFunc: function(context) {
+                drawFunc: function (canvas) {
+                    var context = canvas.getContext();
+
                     context.beginPath();
 
                     context.arc(100, 100, 45, 0, 2 * Math.PI, true);
                     context.moveTo(120, 100);
                     context.arc(100, 100, 20, 0, 2 * Math.PI, false);
 
-                    this.fill(context);
-                    this.stroke(context);
+                    canvas.fill(this);
+                    canvas.stroke(this);
                 }
             });
 

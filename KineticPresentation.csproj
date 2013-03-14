@@ -123,11 +123,12 @@
     <Content Include="lib\xml\index.html" />
     <Content Include="lib\xml\xml.js" />
     <Content Include="printimage.htm" />
+    <Content Include="Script\kinetic-v4.3.3.min.js" />
     <Content Include="Script\tiger.js.txt" />
     <Content Include="Script\Kinetic.3.10.5.js" />
     <Content Include="Script\tiger.js" />
     <Content Include="Script\worldMap.js" />
-    <Content Include="spatialdemo\scripts\Kinetic.3.10.5.js" />
+    <Content Include="spatialdemo\scripts\kinetic-v4.3.3.min.js" />
     <Content Include="spatialdemo\scripts\proj4js-compressed.js" />
     <Content Include="spatialdemo\scripts\usa.js">
       <SubType>Designer</SubType>

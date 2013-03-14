@@ -46,9 +46,9 @@
     </div>
     <script type="text/javascript">
 
-        $(function() {
+        $(function () {
             var cachedHtml;
-            $("#btnUpdate").click(function() {
+            $("#btnUpdate").click(function () {
                 var previewFrame = document.getElementById('preview');
                 var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
 
@@ -69,30 +69,33 @@
                 }
             });
 
-            $("#btnFormat").click(function() {
+            $("#btnFormat").click(function () {
                 CodeMirror.commands["selectAll"](editor);
                 editor.autoFormatRange(editor.getCursor(true), editor.getCursor(false));
             });
 
-            $("#demos").change(function(evt) {
+            $("#demos").change(function (evt) {
 
                 var previewFrame = document.getElementById('preview');
-                var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
+                var preview = previewFrame.contentWindow.document || previewFrame.contentDocument;
 
                 var url = evt.currentTarget.value;
 
                 if (url != null && url != "") {
 
                     $.get(url)
-                    .then(function(html) {
+                    .then(function (html) {
                         cachedHtml = html;
                         preview.open();
                         preview.write(html);
                         preview.close();
                     })
-                    .done(function() {
+                    .done(function () {
                         if ($("#onlyJS").is(':checked')) {
-                            editor.setValue('<scr' + 'ipt type="text/javascript" id="demoScript">\n\n' + js_beautify(preview.scripts.demoScript.innerHTML) + '\n\n</sc' + 'ript>' + Array(10).join('\n'));
+                            setTimeout(function () {
+                                var scriptBlock = (preview.scripts.demoScript || preview.scripts[1]);
+                                editor.setValue('<scr' + 'ipt type="text/javascript" id="demoScript">\n\n' + js_beautify(scriptBlock.innerHTML) + '\n\n</sc' + 'ript>' + Array(10).join('\n'));
+                            }, 250);
                         }
                         else {
                             editor.setValue(cachedHtml + Array(10).join('\n'));
@@ -101,7 +104,7 @@
                 }
             });
 
-            $("#onlyJS").change(function() {
+            $("#onlyJS").change(function () {
                 if ($("#demos").val() === "")
                     return;
 
