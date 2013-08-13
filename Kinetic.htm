@@ -3,7 +3,7 @@
 <head>
     <title>Kinetic Demo</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
+
     <script src="lib/jquery-1.7.2.js" type="text/javascript"></script>
     <script src="lib/jquery-ui-1.8.20.js" type="text/javascript"></script>
     <script src="lib/codemirror.js" type="text/javascript"></script>
@@ -13,7 +13,8 @@
     <script src="lib/htmlmixed/htmlmixed.js" type="text/javascript"></script>
     <script src="lib/formatting.js" type="text/javascript"></script>
     <script src="lib/jsbeautify.js" type="text/javascript"></script>
-    <link href="lib/codemirror.css" rel="stylesheet" type="text/css" />
+    <link href="lib/codemirror.css" rel="stylesheet" type="text/css" />    
+    <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <iframe id="preview" src="/blank.htm"></iframe>
@@ -56,11 +57,13 @@
                     preview.open();
                     preview.write(cachedHtml);
                     //preview.close();
-                    preview.scripts.demoScript.outerHTML = editor.getValue();
-                    var h = preview.documentElement.outerHTML;
-                    preview.open();
-                    preview.write(h);
-                    preview.close();
+                    setTimeout(function () {
+                        preview.scripts.demoScript.outerHTML = editor.getValue();
+                        var h = preview.documentElement.outerHTML;
+                        preview.open();
+                        preview.write(h);
+                        preview.close();
+                    }, 100);
                 }
                 else {
                     preview.open();

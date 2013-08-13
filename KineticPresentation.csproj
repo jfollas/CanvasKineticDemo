@@ -20,6 +20,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -112,26 +116,11 @@
     <Content Include="lib\jquery.layout-latest.js" />
     <Content Include="lib\jsbeautify.js" />
     <Content Include="lib\match-highlighter.js" />
-    <Content Include="lib\themes\ambiance.css" />
-    <Content Include="lib\themes\blackboard.css" />
-    <Content Include="lib\themes\cobalt.css" />
-    <Content Include="lib\themes\jason.css" />
-    <Content Include="lib\themes\eclipse.css" />
-    <Content Include="lib\themes\elegant.css" />
-    <Content Include="lib\themes\erlang-dark.css" />
-    <Content Include="lib\themes\lesser-dark.css" />
-    <Content Include="lib\themes\monokai.css" />
-    <Content Include="lib\themes\neat.css" />
-    <Content Include="lib\themes\night.css" />
-    <Content Include="lib\themes\rubyblue.css" />
-    <Content Include="lib\themes\vibrant-ink.css" />
-    <Content Include="lib\themes\xq-dark.css" />
     <Content Include="lib\xml\index.html" />
     <Content Include="lib\xml\xml.js" />
     <Content Include="printimage.htm" />
     <Content Include="Script\kinetic-v4.3.3.min.js" />
     <Content Include="Script\tiger.js.txt" />
-    <Content Include="Script\Kinetic.3.10.5.js" />
     <Content Include="Script\tiger.js" />
     <Content Include="Script\worldMap.js" />
     <Content Include="spatialdemo\scripts\kinetic-v4.3.3.min.js" />
@@ -176,7 +165,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Script\kinetic-v4.6.0.js" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

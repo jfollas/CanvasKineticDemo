@@ -10,7 +10,7 @@
             display: inline-block;
         }
     </style>
-    <script src="../Script/kinetic-v4.3.3.min.js" type="text/javascript"></script>
+    <script src="../Script/kinetic-v4.6.0.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="container">
@@ -65,7 +65,12 @@
                     animations: animations,
                     frameRate: 10,
                     draggable: true,
-                    dragConstraint: 'horizontal'
+                    dragBoundFunc: function (pos) {
+                        return {
+                            x: pos.x,
+                            y: this.getAbsolutePosition().y
+                        }
+                    }
                 });
 
                 // add the shape to the layer

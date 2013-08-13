@@ -10,7 +10,7 @@
                    }
         
     </style>
-    <script src="../Script/kinetic-v4.3.3.min.js" type="text/javascript"></script>
+    <script src="../Script/kinetic-v4.6.0.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="container">
@@ -27,6 +27,7 @@
             stage.add(layer);
 
             var imageObj = new Image();
+            var landingTween;
 
             imageObj.onload = function() {
                 var img = new Kinetic.Image({
@@ -37,26 +38,32 @@
                 });
 
                 img.on("click", function() {
-                    img.transitionTo({
-                        x: 175,
-                        y: 100,
-                        scale: { x: 0.5, y: 0.5 },
-                        duration: 10,
-                        easing: 'ease-out',
-                        callback: function() {
-                            img.transitionTo({
-                                x: 250,
-                                y: 0,
-                                scale: { x: 0.25, y: 0.25 },
-                                duration: 7,
-                                easing: 'ease-in'
-                            });
-                        }
-                    });
+                    landingTween.play();
                 });
 
                 layer.add(img);
                 layer.draw();
+
+                landingTween = new Kinetic.Tween({
+                    node: img,
+                    duration: 5,
+                    scaleX: 0.5,
+                    scaleY: 0.5,
+                    x: 175,
+                    y: 100,
+                    easing: Kinetic.Easings.EaseOut,
+                    onFinish: function () {
+                        new Kinetic.Tween({
+                            node: img,
+                            duration: 5,
+                            x: 250,
+                            y: 0,
+                            scaleX: 0.25,
+                            scaleY: 0.25,
+                            easing: Kinetic.Easings.EaseIn
+                        }).play();
+                    }
+                });
             };
 
             imageObj.src = "/images/ufo.png";
